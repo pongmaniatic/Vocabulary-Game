@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MasterObject: {fileID: 0}
-  Master_Script: {fileID: 0}
+  MasterScript: {fileID: 0}
 --- !u!4 &477820708
 Transform:
   m_ObjectHideFlags: 0
