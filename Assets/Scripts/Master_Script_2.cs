@@ -38,8 +38,8 @@ public class Master_Script_2 : MonoBehaviour
     {
         Debug.Log(TestingText);
         CreateDeck();
-        //Debug.Log("Deck at play 0,0 : " + MasterScript.ChosenDeckMaster1[0, 0]);
-        //Debug.Log("Deck at play 0,0 : " + MasterScript.ChosenDeckMaster1[0, 1]);
+        Debug.Log("Deck at play 0,0 : " + MasterScript.ChosenDeckMaster1[0, 0]);
+        Debug.Log("Deck at play 0,0 : " + MasterScript.ChosenDeckMaster1[0, 1]);
         /*var y = 0;
         var z = 0;        
         while ( y != 9)
@@ -68,26 +68,37 @@ public class Master_Script_2 : MonoBehaviour
 
         while (CardInScreen != CardLimitInScreen)
         {
+
+            Debug.Log("1");
             if (CardInScreen > CardLimitInScreen)
             {
                 CardInScreen = CardLimitInScreen;
             }
 
+
+            Debug.Log("2");
             WordSide1 = Deck[CardInScreen, 0];
             WordSide2 = Deck[CardInScreen, 1];
-            CreateCard(WordSide1, WordSide2);
+
+
+            Debug.Log("3");
+            CreateCard(WordSide1, WordSide2, false);
+
+
+            Debug.Log("4");
             CardInScreen += 1;
 
 
         }
-
     }
+    
 
-    public void CreateCard(string Side1, string Side2) //This will randomize 9 numbers, check if it already created a card in that position, if not it creates a card asigned to that position in the screen and so on
+    public void CreateCard(string Side1, string Side2, bool finished) //This will randomize 9 numbers, check if it already created a card in that position, if not it creates a card asigned to that position in the screen and so on
     {
-        
+        FinishedLoadingCurrent = finished;
         while (FinishedLoadingCurrent == false)
         {
+            Debug.Log("5");
             var RandomNumber = Random.Range(0, 9);
             Debug.Log(RandomNumber);
             if (RandomNumber == 1)
@@ -103,7 +114,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 1;
                     CardScript.WordSide1 = Side1; 
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
             if (RandomNumber == 2)
@@ -119,7 +130,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 2;
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
             if (RandomNumber == 3)
@@ -135,7 +146,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 3;
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
             if (RandomNumber == 4)
@@ -151,7 +162,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 4;
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
             if (RandomNumber == 5)
@@ -167,7 +178,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 5;
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
             if (RandomNumber == 6)
@@ -183,7 +194,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 6;
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
             if (RandomNumber == 7)
@@ -199,7 +210,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 7;
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
             if (RandomNumber == 8)
@@ -215,7 +226,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 8;
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
             if (RandomNumber == 9)
@@ -231,9 +242,10 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.Position = 9;
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
-                    return;
+                    FinishedLoadingCurrent = true;
                 }
             }
         }
     }
+
 }
