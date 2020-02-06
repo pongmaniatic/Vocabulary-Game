@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -151,6 +152,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MasterObject: {fileID: 0}
   MasterScript: {fileID: 0}
+  CardLimitInScreen: 9
+  CardInScreen: 0
+  CardPrefab: {fileID: 5226483622132345810, guid: a724af7ddab73d94597270147810a964,
+    type: 3}
+  Panel: {fileID: 1348297529}
+  Pos1: 0
+  Pos2: 0
+  Pos3: 0
+  Pos4: 0
+  Pos5: 0
+  Pos6: 0
+  Pos7: 0
+  Pos8: 0
+  Pos9: 0
+  FinishedCreating: 0
+  FinishedLoadingCurrent: 0
 --- !u!4 &477820708
 Transform:
   m_ObjectHideFlags: 0
@@ -572,7 +589,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 220, y: 90}
+  m_SizeDelta: {x: 219.17, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478908635
 MonoBehaviour:
@@ -728,7 +745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -233}
   m_SizeDelta: {x: 180, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495811988
