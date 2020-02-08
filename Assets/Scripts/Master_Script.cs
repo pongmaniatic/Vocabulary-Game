@@ -6,17 +6,17 @@ using UnityEngine.SceneManagement;
 public class Master_Script : MonoBehaviour
 {
 
-    public string Testing = "Task successful";
+    public string Testing;
 
-    public string[,] ChosenDeckMaster1 =   new string[10,2];
+    public string[,] ChosenDeckMaster1 = new string[10,2];
 
     public bool DeckTransfered = false;
 
-    void Start()
+    void Awake()
     {
-    DontDestroyOnLoad(transform.gameObject);
-    Testing = "Task successful";
-    }    
+        DontDestroyOnLoad(this.gameObject);
+        Testing = "Task successful";
+    }
 
 
     public void Update()
@@ -24,7 +24,6 @@ public class Master_Script : MonoBehaviour
         if (DeckTransfered == true)
         {
         Debug.Log("current deck 0,0 : " + ChosenDeckMaster1[0,0]);
-        Debug.Log("current deck 0,0 : " + ChosenDeckMaster1[0,1]);
         SceneManager.LoadScene (sceneName:"Game");
         DeckTransfered = false;
         } 
@@ -35,4 +34,10 @@ public class Master_Script : MonoBehaviour
     {
         DeckTransfered = true;
     }
+
+    public void TestingClick()
+    {
+        Debug.Log("current deck 0,0 : " + ChosenDeckMaster1[0, 0]);
+    }
+
 }

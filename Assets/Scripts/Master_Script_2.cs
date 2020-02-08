@@ -15,6 +15,8 @@ public class Master_Script_2 : MonoBehaviour
     public GameObject CardPrefab;
     public GameObject Panel;
 
+    public GameObject SelectedCard;
+
     public bool Pos1 = false;
     public bool Pos2 = false;
     public bool Pos3 = false;
@@ -36,10 +38,8 @@ public class Master_Script_2 : MonoBehaviour
 
     public void TestingClick()
     {
-        Debug.Log(TestingText);
-        CreateDeck();
-        Debug.Log("Deck at play 0,0 : " + MasterScript.ChosenDeckMaster1[0, 0]);
-        Debug.Log("Deck at play 0,0 : " + MasterScript.ChosenDeckMaster1[0, 1]);
+        //Debug.Log(TestingText);
+        Debug.Log("current deck 0,0 : " + MasterScript.ChosenDeckMaster1[0, 0]);
         /*var y = 0;
         var z = 0;        
         while ( y != 9)
@@ -69,6 +69,7 @@ public class Master_Script_2 : MonoBehaviour
 
         while (CardInScreen != CardLimitInScreen)
         {
+            var TheCardWasCreated = false;
 
             if (CardInScreen > CardLimitInScreen)
             {
@@ -78,27 +79,31 @@ public class Master_Script_2 : MonoBehaviour
             WordSide1 = Deck[CardInScreen, 0];
             WordSide2 = Deck[CardInScreen, 1];
 
-            CreateCard(WordSide1, WordSide2);
+            TheCardWasCreated = CreateCard(WordSide1, WordSide2);
 
-            CardInScreen += 1;
+            if (TheCardWasCreated == true)
+            {
+                CardInScreen += 1;
+            }
 
-        }
+            }
+        FinishedCreating = true;
     }
     
 
-    public void CreateCard(string Side1, string Side2) //This will randomize 9 numbers, check if it already created a card in that position, if not it creates a card asigned to that position in the screen and so on
-    {
+    public bool CreateCard(string Side1, string Side2) //This will randomize 9 numbers, check if it already created a card in that position, if not it creates a card asigned to that position in the screen and so on
+    {   
 
         //while (FinishedLoadingCurrent == false)
         //{
-            var RandomNumber = Random.Range(0, 9);
-            Debug.Log(RandomNumber);
+            var RandomNumber = Random.Range(1, 10);
+            //Debug.Log(RandomNumber);
             if (RandomNumber == 1)
             {
                 if (Pos1 == false)
                 {
                     Pos1 = true;
-                    Debug.Log("A Card in the first position was created ");
+                    //Debug.Log("A Card in the first position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -107,16 +112,16 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1; 
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
                 RandomNumber = Random.Range(0, 9);
-        }
+            }
             if (RandomNumber == 2)
             {
                 if (Pos2 == false)
                 {
                     Pos2 = true;
-                    Debug.Log("A Card in the second position was created ");
+                    //Debug.Log("A Card in the second position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -125,16 +130,16 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
                 RandomNumber = Random.Range(0, 9);
-        }
+            }
             if (RandomNumber == 3)
             {
                 if (Pos3 == false)
                 {
                     Pos3 = true;
-                    Debug.Log("A Card in the third position was created ");
+                    //Debug.Log("A Card in the third position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -143,16 +148,16 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
                 RandomNumber = Random.Range(0, 9);
-        }
+            }
             if (RandomNumber == 4)
             {
                 if (Pos4 == false)
                 {
                     Pos4 = true;
-                    Debug.Log("A Card in the forth position was created ");
+                    //Debug.Log("A Card in the forth position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -161,16 +166,16 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
                 RandomNumber = Random.Range(0, 9);
-        }
+            }
             if (RandomNumber == 5)
             {
                 if (Pos5 == false)
                 {
                     Pos5 = true;
-                    Debug.Log("A Card in the fifth position was created ");
+                    //Debug.Log("A Card in the fifth position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -179,16 +184,16 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
                 RandomNumber = Random.Range(0, 9);
-        }
+            }
             if (RandomNumber == 6)
             {
                 if (Pos6 == false)
                 {
                     Pos6 = true;
-                    Debug.Log("A Card in the sixth position was created ");
+                    //Debug.Log("A Card in the sixth position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -197,16 +202,16 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
                 RandomNumber = Random.Range(0, 9);
-        }
+            }
             if (RandomNumber == 7)
             {
                 if (Pos7 == false)
                 {
                     Pos7 = true;
-                    Debug.Log("A Card in the seventh position was created ");
+                    //Debug.Log("A Card in the seventh position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -215,7 +220,7 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
                 RandomNumber = Random.Range(0, 9);
             }
@@ -224,7 +229,7 @@ public class Master_Script_2 : MonoBehaviour
                 if (Pos8 == false)
                 {
                     Pos8 = true;
-                    Debug.Log("A Card in the eighth position was created ");
+                    //Debug.Log("A Card in the eighth position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -233,16 +238,16 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
                 RandomNumber = Random.Range(0, 9);
-        }
+            }
             if (RandomNumber == 9)
             {
                 if (Pos9 == false)
                 {
                     Pos9 = true;
-                    Debug.Log("A Card in the ninth position was created ");
+                    //Debug.Log("A Card in the ninth position was created ");
                     card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
                     card.transform.parent = Panel.transform;
                     card.gameObject.tag = "card";
@@ -251,11 +256,10 @@ public class Master_Script_2 : MonoBehaviour
                     CardScript.WordSide1 = Side1;
                     CardScript.WordSide2 = Side2;
                     FinishedLoadingCurrent = true;
-                    return;
+                    return true;
                 }
-                RandomNumber = Random.Range(0, 9);
-        }
-        //}
+            }
+        return false;
     }
 
 }
