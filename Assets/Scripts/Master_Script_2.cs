@@ -15,7 +15,7 @@ public class Master_Script_2 : MonoBehaviour
     public GameObject CardPrefab;
     public GameObject Panel;
 
-    public GameObject SelectedCard;
+    public int SelectedCard = 0;
 
     public bool Pos1 = false;
     public bool Pos2 = false;

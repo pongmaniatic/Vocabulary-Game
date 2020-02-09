@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CardScript : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class CardScript : MonoBehaviour
 
     public GameObject Master2;
     public Master_Script_2 MasterScript2;
+    public Sprite CardSelesctedSprite;
+    public Sprite CardSprite;
 
     // Start is called before the first frame update 
     void Start()
@@ -24,7 +27,7 @@ public class CardScript : MonoBehaviour
 
         if (Position == 1)
         {
-            transform.position = new Vector3(-4.25f, 2.8f, 0);
+            transform.position = new Vector3(-3.65f, 2.8f, 0);
         }
         if (Position == 2)
         {
@@ -32,11 +35,11 @@ public class CardScript : MonoBehaviour
         }
         if (Position == 3)
         {
-            transform.position = new Vector3(4.25f, 2.8f, 0);
+            transform.position = new Vector3(3.65f, 2.8f, 0);
         }
         if (Position == 4)
         {
-            transform.position = new Vector3(-4.25f, 0.58f, 0);
+            transform.position = new Vector3(-3.65f, 0.58f, 0);
         }
         if (Position == 5)
         {
@@ -44,11 +47,11 @@ public class CardScript : MonoBehaviour
         }
         if (Position == 6)
         {
-            transform.position = new Vector3(4.25f, 0.58f, 0);
+            transform.position = new Vector3(3.65f, 0.58f, 0);
         }
         if (Position == 7)
         {
-            transform.position = new Vector3(-4.25f, -1.64f, 0);
+            transform.position = new Vector3(-3.65f, -1.64f, 0);
         }
         if (Position == 8)
         {
@@ -56,7 +59,7 @@ public class CardScript : MonoBehaviour
         }
         if (Position == 9)
         {
-            transform.position = new Vector3(4.25f, -1.64f, 0);
+            transform.position = new Vector3(3.65f, -1.64f, 0);
         }
 
         Word.text = WordSide2;
@@ -65,12 +68,20 @@ public class CardScript : MonoBehaviour
 
     public void Update()
     {
-        
+        if (MasterScript2.SelectedCard == Position)
+        {
+            this.gameObject.GetComponent<Image>().sprite = CardSelesctedSprite;
+        }
+        else
+        {
+            this.gameObject.GetComponent<Image>().sprite = CardSprite;
+        }
     }
 
     public void Selected()
     {
-       // MasterScript2.SelectedCard = this;
-        //Debug.Log(MasterScript2.SelectedCard);
+        MasterScript2.SelectedCard = Position;
+        Debug.Log(MasterScript2.SelectedCard);
+
     }
 }
