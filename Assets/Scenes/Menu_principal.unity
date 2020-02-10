@@ -5189,7 +5189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1526d5a72d89b25409638aac9ad0b666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumeroDeDecks: 1
+  NumeroDeDecks: 2
   Awake: 0
 --- !u!1 &1355841871
 GameObject:

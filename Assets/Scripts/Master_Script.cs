@@ -5,16 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class Master_Script : MonoBehaviour
 {
+    private static Master_Script MasterObject;
 
     public string Testing;
-
     public string[,] ChosenDeckMaster1 = new string[10,2];
 
     public bool DeckTransfered = false;
 
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (MasterObject != null && MasterObject != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            MasterObject = this;
+            DontDestroyOnLoad(gameObject);
+        }
         Testing = "Task successful";
     }
 

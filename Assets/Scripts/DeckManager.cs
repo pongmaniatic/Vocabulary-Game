@@ -7,7 +7,7 @@ public class DeckManager : MonoBehaviour
     //Deck de numeros
     public string[,] Deck_numbers =  new string[10,2] {{"Cero", "Noll"}, {"Uno", "Ett"}, {"Dos", "två"}, {"Tres", "Tre"}, {"Cuatro", "Fyra"}, {"Cinco", "Fem"}, {"Seis", "Sex"}, {"Siete", "Sju"}, {"Ocho", "Åtta"},{"Numeros 1", "Numbers 1"}};
     public string[,] Deck_colors =  new string[10,2] {{"Rojo", "Röd"}, {"Azul", "Blå"}, {"Amarillo", "Gul"}, {"Blanco", "Vit"}, {"Negro", "Svart"}, {"Verde", "Grön"}, {"Púrpura", "Lila"}, {"Naranja", "Orange"}, {"Celeste ", "Ljusblå"}, {"Colores 1", "Colors 1"}};
-    public int NumeroDeDecks = 1;
+    public int NumeroDeDecks = 2;
     public int Awake = 0;  
     public string[,,] All_Decks =   new string[2,10,2];
 
