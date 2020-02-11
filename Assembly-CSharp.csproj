@@ -66,7 +66,6 @@
     <Compile Include="Assets\Scripts\Button_behavior.cs" />
     <Compile Include="Assets\Scripts\CardScript.cs" />
     <Compile Include="Assets\Scripts\Change_volume.cs" />
-    <Compile Include="Assets\Scripts\DeckManager.cs" />
     <Compile Include="Assets\Scripts\Deck_script.cs" />
     <Compile Include="Assets\Scripts\Master_Script.cs" />
     <Compile Include="Assets\Scripts\Master_Script_2.cs" />

@@ -8,7 +8,7 @@ public class Master_Script_2 : MonoBehaviour
     private string TestingText = "Task Failed";
     public GameObject MasterObject;
     public Master_Script MasterScript;
-    public string[,] ChosenDeckMaster2 =   new string[10,2];
+    private string[,] ChosenDeckMaster2 =   new string[10,2];
     public int CardLimitInScreen = 9;
     public int CardInScreen = 0;
     private GameObject card;
@@ -33,14 +33,11 @@ public class Master_Script_2 : MonoBehaviour
     {
         MasterObject = GameObject.Find("Master");
         MasterScript = MasterObject.GetComponent<Master_Script>();
-        TestingText = MasterScript.Testing;
     }
 
-    public void TestingClick()
-    {
-        //Debug.Log(TestingText);
-        Debug.Log("current deck 0,0 : " + MasterScript.ChosenDeckMaster1[0, 0]);
-        /*var y = 0;
+    private void TestingClick()
+    { 
+        var y = 0;
         var z = 0;        
         while ( y != 9)
         {
@@ -52,11 +49,11 @@ public class Master_Script_2 : MonoBehaviour
             z = 0;
             y += 1;
         }
-        */ //Debug.Log("cero: " + ChosenDeckMaster2[0,0]); //Debug.Log("Noll: " + ChosenDeckMaster2[0,1]);
     }
 
     public void CreateDeck() //This will read the deck array and will call the CreateCard function until all 9 necesary cards are created or if the array ends.
     {
+        TestingClick();
         var NumberOfTotalCards = Deck.Length;
         var WordSide1 = "";
         var WordSide2 = "";
@@ -76,8 +73,14 @@ public class Master_Script_2 : MonoBehaviour
                 CardInScreen = CardLimitInScreen;
             }
 
-            WordSide1 = Deck[CardInScreen, 0];
-            WordSide2 = Deck[CardInScreen, 1];
+            //WordSide1 = Deck[CardInScreen, 0];
+            //WordSide2 = Deck[CardInScreen, 1];
+            Debug.Log("First value: " + ChosenDeckMaster2[0, 0]);
+            WordSide1 = ChosenDeckMaster2[CardInScreen, 0];
+            WordSide2 = ChosenDeckMaster2[CardInScreen, 1];
+            
+            Debug.Log(WordSide1);
+            Debug.Log(WordSide2);
 
             TheCardWasCreated = CreateCard(WordSide1, WordSide2);
 

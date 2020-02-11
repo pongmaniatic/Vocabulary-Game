@@ -13,7 +13,7 @@ public class PageManager : MonoBehaviour
     private GameObject Deck;
 
     public TextMeshProUGUI TextPagina;
-    public DeckManager deckManager;
+    public Master_Script MasterScript;
     public GameObject Prefab_Deck_Vacio;
     public GameObject Ordenador_de_Decks;
 
@@ -24,43 +24,43 @@ public class PageManager : MonoBehaviour
             {
                 if (pagina == 1)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 0;    
+                    DecksInPage = MasterScript.NumberOfDecks - 0;    
                 }
                 if (pagina == 2)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 6;    
+                    DecksInPage = MasterScript.NumberOfDecks - 6;    
                 }
                 if (pagina == 3)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 12;    
+                    DecksInPage = MasterScript.NumberOfDecks - 12;    
                 }
                 if (pagina == 4)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 18;    
+                    DecksInPage = MasterScript.NumberOfDecks - 18;    
                 }
                 if (pagina == 5)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 24;    
+                    DecksInPage = MasterScript.NumberOfDecks - 24;    
                 }
                 if (pagina == 6)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 30;    
+                    DecksInPage = MasterScript.NumberOfDecks - 30;    
                 }
                 if (pagina == 7)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 36;    
+                    DecksInPage = MasterScript.NumberOfDecks - 36;    
                 }
                 if (pagina == 8)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 42;   
+                    DecksInPage = MasterScript.NumberOfDecks - 42;   
                 }
                 if (pagina == 9)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 48;    
+                    DecksInPage = MasterScript.NumberOfDecks - 48;    
                 }
                 if (pagina == 10)
                 {
-                    DecksInPage = deckManager.NumeroDeDecks - 54;    
+                    DecksInPage = MasterScript.NumberOfDecks - 54;    
                 }
 
                 while (CurrentLoadedDecks != DecksInPage)
@@ -132,43 +132,43 @@ public class PageManager : MonoBehaviour
 
 
         // This changes de page to a next one if possible and sets up de deck shown onscreen
-        if (deckManager.NumeroDeDecks < 7)
+        if (MasterScript.NumberOfDecks < 7)
         {
         MaxPagina = 1;
         }
-        if (deckManager.NumeroDeDecks < 13 && deckManager.NumeroDeDecks >= 7)
+        if (MasterScript.NumberOfDecks < 13 && MasterScript.NumberOfDecks >= 7)
         {
         MaxPagina = 2;
         }
-        if (deckManager.NumeroDeDecks < 19 && deckManager.NumeroDeDecks >= 13)
+        if (MasterScript.NumberOfDecks < 19 && MasterScript.NumberOfDecks >= 13)
         {
         MaxPagina = 3;
         }
-        if (deckManager.NumeroDeDecks < 25 && deckManager.NumeroDeDecks >= 19)
+        if (MasterScript.NumberOfDecks < 25 && MasterScript.NumberOfDecks >= 19)
         {
         MaxPagina = 4;
         }
-        if (deckManager.NumeroDeDecks < 31 && deckManager.NumeroDeDecks >= 25)
+        if (MasterScript.NumberOfDecks < 31 && MasterScript.NumberOfDecks >= 25)
         {
         MaxPagina = 5;
         }
-        if (deckManager.NumeroDeDecks < 37 && deckManager.NumeroDeDecks >= 31)
+        if (MasterScript.NumberOfDecks < 37 && MasterScript.NumberOfDecks >= 31)
         {
         MaxPagina = 6;
         }
-        if (deckManager.NumeroDeDecks < 43 && deckManager.NumeroDeDecks >= 37)
+        if (MasterScript.NumberOfDecks < 43 && MasterScript.NumberOfDecks >= 37)
         {
         MaxPagina = 7;
         }
-        if (deckManager.NumeroDeDecks < 49 && deckManager.NumeroDeDecks >= 43)
+        if (MasterScript.NumberOfDecks < 49 && MasterScript.NumberOfDecks >= 43)
         {
         MaxPagina = 8;
         }
-        if (deckManager.NumeroDeDecks < 55 && deckManager.NumeroDeDecks >= 49)
+        if (MasterScript.NumberOfDecks < 55 && MasterScript.NumberOfDecks >= 49)
         {
         MaxPagina = 9;
         }
-        if (deckManager.NumeroDeDecks < 61 && deckManager.NumeroDeDecks >= 55)
+        if (MasterScript.NumberOfDecks < 61 && MasterScript.NumberOfDecks >= 55)
         {
         MaxPagina = 10;
         }

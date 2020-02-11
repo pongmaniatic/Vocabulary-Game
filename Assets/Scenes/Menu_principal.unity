@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56575cfc633fa0b468192560b2ca559b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Testing: 
+  NumberOfDecks: 1
   DeckTransfered: 0
 --- !u!1 &30331859
 GameObject:
@@ -449,6 +449,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30331859}
   m_CullTransparentMesh: 0
+--- !u!114 &93430329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6393148006937577135, guid: c2c854707cb75af41bafe35025e0b8ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 6393148006342731349}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56575cfc633fa0b468192560b2ca559b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &103150605
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextPagina: {fileID: 1355841873}
-  deckManager: {fileID: 1348872574}
+  MasterScript: {fileID: 93430329}
   Prefab_Deck_Vacio: {fileID: 5631411934772617088, guid: 229afc193a07b4c46b6bca2acb89c141,
     type: 3}
   Ordenador_de_Decks: {fileID: 1348872572}
@@ -5155,7 +5167,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348872573}
-  - component: {fileID: 1348872574}
   m_Layer: 0
   m_Name: Ordenador_de_Decks
   m_TagString: Untagged
@@ -5177,20 +5188,6 @@ Transform:
   m_Father: {fileID: 325571967}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1348872574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348872572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1526d5a72d89b25409638aac9ad0b666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NumeroDeDecks: 2
-  Awake: 0
 --- !u!1 &1355841871
 GameObject:
   m_ObjectHideFlags: 0
