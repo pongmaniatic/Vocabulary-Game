@@ -43,5 +43,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56575cfc633fa0b468192560b2ca559b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Testing: 
+  NumberOfDecks: 1
   DeckTransfered: 0
+  CardLimitInScreen: 9
+  CardInScreen: 0
+  SelectedCard: 0
+  Pos1: 0
+  Pos2: 0
+  Pos3: 0
+  Pos4: 0
+  Pos5: 0
+  Pos6: 0
+  Pos7: 0
+  Pos8: 0
+  Pos9: 0
+  FinishedCreating: 0
+  FinishedLoadingCurrent: 0
+  CardPrefab: {fileID: 5226483622132345810, guid: a724af7ddab73d94597270147810a964,
+    type: 3}
+  Panel: {fileID: 1620000987285084672, guid: 56198ea35da2b8544990dad15a9d649c, type: 3}

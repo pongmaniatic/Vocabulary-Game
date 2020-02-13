@@ -81,6 +81,9 @@ public class Master_Script : MonoBehaviour
         }
 
 
+        
+
+
         //private List<Card> _cartas = new List<Card>();
         //private Dictionary<int, Card> _dictionario = new Dictionary<int, Card>();
 
@@ -93,7 +96,7 @@ public class Master_Script : MonoBehaviour
         ColorsDecks = new Deck(Colors,1);
         // Complete an array of decks
         AllDecks = new Deck[] { NumbersDecks, ColorsDecks };
-        Debug.Log(AllDecks[0].Cards[0].Side1);
+
     }
 
     public void Update() // This detects the signal of the deck having been chosen and loads the next scene
@@ -113,12 +116,52 @@ public class Master_Script : MonoBehaviour
 
     public void CreateDeck() //This will read the deck array and will call the CreateCard function until all 9 necesary cards are created or if the array ends.
     {
+
         var WordSide1 = "";
         var WordSide2 = "";
+        int maxAmountOfCards = 9;
+        int RandomNumber;
+        int currentItemFromList;
+        var cardPositions = new List<int>(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
+        var sizeOfList = cardPositions.Count;
 
-   
-        CurrentDeck = AllDecks[ChosenDeck];
 
+        //Debug.Log(sizeOfList);
+
+
+
+        for (int i = 0; i < maxAmountOfCards; i++)
+        {
+            Panel = GameObject.FindGameObjectWithTag("Panel");
+            //Debug.Log("A Card in the" + i + " position was created ");
+            sizeOfList = cardPositions.Count;
+             RandomNumber = Random.Range(0, sizeOfList-1);
+             currentItemFromList = cardPositions[RandomNumber];
+
+             WordSide1 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side1;
+             WordSide2 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side2;
+             //WordSide1 = "it worked";
+             //WordSide2 = "yes it did";
+            
+            // generate the card
+            card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
+            card.transform.SetParent(Panel.transform);
+            //card.transform.parent = Panel.transform;
+            card.gameObject.tag = "card";
+            var CardScript = card.GetComponent<CardScript>();
+            CardScript.Position = i+1;
+            CardScript.WordSide1 = WordSide1;
+            CardScript.WordSide2 = WordSide2;
+            FinishedLoadingCurrent = true;
+            cardPositions.Remove(cardPositions[RandomNumber]);
+
+        }
+
+
+
+
+
+        /*
         while (CardInScreen != CardLimitInScreen)
         {
             CurrentCard = CurrentDeck.Cards[CardInScreen];
@@ -135,43 +178,20 @@ public class Master_Script : MonoBehaviour
             Debug.Log(WordSide1);
             Debug.Log(WordSide2);
 
-
-
             TheCardWasCreated = CreateCard(WordSide1, WordSide2);
-
             if (TheCardWasCreated == true)
             {
                 CardInScreen += 1;
 
             }
-
         }
         FinishedCreating = true;
+        */
     }
 
     public bool CreateCard(string Side1, string Side2) //This will randomize 9 numbers, check if it already created a card in that position, if not it creates a card asigned to that position in the screen and so on
     {
-        /*int maxAmountOfCards = 10;
-        for(int i = 1; i < maxAmountOfCards; i++)
-        {
-
-            Pos1 = true;
-            //Debug.Log("A Card in the first position was created ");
-            card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
-            card.transform.parent = Panel.transform;
-            card.gameObject.tag = "card";
-            var CardScript = card.GetComponent<CardScript>();
-            CardScript.Position = i;
-            CardScript.WordSide1 = Side1;
-            CardScript.WordSide2 = Side2;
-            FinishedLoadingCurrent = true;
-            return true;
-        }*/
-
-        //while (FinishedLoadingCurrent == false)
-        //{
         var RandomNumber = Random.Range(1, 10);
-        //Debug.Log(RandomNumber);
         if (RandomNumber == 1)
         {
             if (Pos1 == false)
@@ -336,7 +356,6 @@ public class Master_Script : MonoBehaviour
         return false;
     }
 }
-
 public struct Deck
 {
     public Card[] Cards;
@@ -348,7 +367,6 @@ public struct Deck
         ID = id;
     }
 }
-
 public struct Card
 {
     public int cardSide;

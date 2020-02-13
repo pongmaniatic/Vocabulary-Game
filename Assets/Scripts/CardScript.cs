@@ -12,7 +12,6 @@ public class CardScript : MonoBehaviour
     public int Position = 0;
     public bool CurrentSide = true;
     public TextMeshProUGUI Word;
-
     public GameObject Master2;
     public Sprite CardSelesctedSprite;
     public Sprite CardSprite;
@@ -23,10 +22,8 @@ public class CardScript : MonoBehaviour
         MasterScript = Master_Script.MasterObject;
     }
 
-  
     void Start()
     {
-
         if (Position == 1)
         {
             transform.position = new Vector3(-3.65f, 2.8f, 0);
@@ -63,9 +60,7 @@ public class CardScript : MonoBehaviour
         {
             transform.position = new Vector3(3.65f, -1.64f, 0);
         }
-
         Word.text = WordSide2;
-
     }
 
     public void Update()

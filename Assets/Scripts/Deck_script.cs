@@ -9,17 +9,12 @@ public class Deck_script : MonoBehaviour
     public Button TheButton;
     public TextMeshProUGUI Options_text;
     public Master_Script MasterScript;
-
     public GameObject MasterObject;
-
     public int count = 0;
-
 
     void Awake() // Finds the master object and its script
     {
         MasterScript = Master_Script.MasterObject;
-        //MasterObject = GameObject.Find("Master");
-        //MasterScript = MasterObject.GetComponent<Master_Script>();
     }
 
     public void Update() //Detects when this object has been clicked

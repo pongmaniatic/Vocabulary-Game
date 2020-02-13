@@ -309,6 +309,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumberOfDecks: 1
   DeckTransfered: 0
+  CardLimitInScreen: 9
+  CardInScreen: 0
+  SelectedCard: 0
+  Pos1: 0
+  Pos2: 0
+  Pos3: 0
+  Pos4: 0
+  Pos5: 0
+  Pos6: 0
+  Pos7: 0
+  Pos8: 0
+  Pos9: 0
+  FinishedCreating: 0
+  FinishedLoadingCurrent: 0
+  CardPrefab: {fileID: 0}
+  Panel: {fileID: 0}
 --- !u!1 &30331859
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,7 +851,7 @@ GameObject:
   - component: {fileID: 134314982}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6940,6 +6956,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393148006937577135, guid: c2c854707cb75af41bafe35025e0b8ac,
+        type: 3}
+      propertyPath: CardPrefab
+      value: 
+      objectReference: {fileID: 5631411934772617088, guid: 229afc193a07b4c46b6bca2acb89c141,
+        type: 3}
+    - target: {fileID: 6393148006937577135, guid: c2c854707cb75af41bafe35025e0b8ac,
+        type: 3}
+      propertyPath: Panel
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c854707cb75af41bafe35025e0b8ac, type: 3}
