@@ -14,16 +14,18 @@ public class CardScript : MonoBehaviour
     public TextMeshProUGUI Word;
 
     public GameObject Master2;
-    public Master_Script_2 MasterScript2;
     public Sprite CardSelesctedSprite;
     public Sprite CardSprite;
+    public Master_Script MasterScript;
 
-    // Start is called before the first frame update 
+    void Awake() // Finds the master object and its script
+    {
+        MasterScript = Master_Script.MasterObject;
+    }
+
+  
     void Start()
     {
-
-        Master2 = GameObject.Find("Master2");
-        MasterScript2 = Master2.GetComponent<Master_Script_2>();
 
         if (Position == 1)
         {
@@ -68,7 +70,7 @@ public class CardScript : MonoBehaviour
 
     public void Update()
     {
-        if (MasterScript2.SelectedCard == Position)
+        if (MasterScript.SelectedCard == Position)
         {
             this.gameObject.GetComponent<Image>().sprite = CardSelesctedSprite;
         }
@@ -80,8 +82,8 @@ public class CardScript : MonoBehaviour
 
     public void Selected()
     {
-        MasterScript2.SelectedCard = Position;
-        Debug.Log(MasterScript2.SelectedCard);
+        MasterScript.SelectedCard = Position;
+        Debug.Log(MasterScript.SelectedCard);
 
     }
 }

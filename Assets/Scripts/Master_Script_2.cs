@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Master_Script_2 : MonoBehaviour
 {
+    /*
     public string[,] Deck =  new string[10,2] {{"Cero", "Noll"}, {"Uno", "Ett"}, {"Dos", "två"}, {"Tres", "Tre"}, {"Cuatro", "Fyra"}, {"Cinco", "Fem"}, {"Seis", "Sex"}, {"Siete", "Sju"}, {"Ocho", "Åtta"},{"Numeros 1", "Numbers 1"}};
     private string TestingText = "Task Failed";
     public GameObject MasterObject;
@@ -264,5 +265,5 @@ public class Master_Script_2 : MonoBehaviour
             }
         return false;
     }
-
+*/
 }

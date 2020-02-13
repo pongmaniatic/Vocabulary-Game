@@ -19,8 +19,7 @@ public class PageManager : MonoBehaviour
 
     void Update()
     {
-
-        if (CurrentLoadedDecks == 0)
+        if (CurrentLoadedDecks == 0) 
             {
                 if (pagina == 1)
                 {
@@ -118,7 +117,7 @@ public class PageManager : MonoBehaviour
                     }
                     CurrentLoadedDecks += 1;
                 }
-            }        
+            }
     }
 
     public void NextPage()
