@@ -10,21 +10,33 @@ public class Deck_script : MonoBehaviour
     public TextMeshProUGUI Options_text;
     public Master_Script MasterScript;
     public GameObject MasterObject;
-    public int count = 0;
+    public int count;
+
+    private bool OneClick = false;
 
     void Awake() // Finds the master object and its script
     {
         MasterScript = Master_Script.MasterObject;
+        Options_text.text = "Empty";
     }
 
     public void Update() //Detects when this object has been clicked
     {
         Button btn = TheButton.GetComponent<Button>();// This detects that this object has been clicked
         btn.onClick.AddListener(TaskOnClick);// THis Runs the TaskOnCLick function when a click is detected
+        if (count < 2)
+        {
+            var name = MasterScript.AllDecks[count].DeckName;
+            Options_text.text = name;
+        }
     }
 
     public void TaskOnClick()
     {
-        MasterScript.DeckLoaded(count);
+        if (OneClick == false)
+        {
+            OneClick = true;
+            MasterScript.DeckLoaded(count);
+        }
     }
 }

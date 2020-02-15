@@ -71,7 +71,7 @@ public class PageManager : MonoBehaviour
                         Deck.transform.parent = Ordenador_de_Decks.transform;
                         Deck.gameObject.tag="Deck";
                         var DeckScript = Deck.GetComponent<Deck_script>();
-                        DeckScript.count = 1;
+                        DeckScript.count = 0;
 
 
                     }
@@ -81,7 +81,7 @@ public class PageManager : MonoBehaviour
                         Deck.transform.parent = Ordenador_de_Decks.transform;    
                         Deck.gameObject.tag="Deck"; 
                         var DeckScript = Deck.GetComponent<Deck_script>();
-                        DeckScript.count = 2;   
+                        DeckScript.count = 1;   
                     }
                     if (CurrentLoadedDecks == 2)
                     {   
@@ -89,7 +89,7 @@ public class PageManager : MonoBehaviour
                         Deck.transform.parent = Ordenador_de_Decks.transform;  
                         Deck.gameObject.tag="Deck";
                         var DeckScript = Deck.GetComponent<Deck_script>();
-                        DeckScript.count = 3;      
+                        DeckScript.count = 2;      
                     }
                     if (CurrentLoadedDecks == 3)
                     {   
@@ -97,7 +97,7 @@ public class PageManager : MonoBehaviour
                         Deck.transform.parent = Ordenador_de_Decks.transform; 
                         Deck.gameObject.tag="Deck";
                         var DeckScript = Deck.GetComponent<Deck_script>();
-                        DeckScript.count = 4;      
+                        DeckScript.count = 3;      
                     }
                     if (CurrentLoadedDecks == 4)
                     {   
@@ -105,7 +105,7 @@ public class PageManager : MonoBehaviour
                         Deck.transform.parent = Ordenador_de_Decks.transform; 
                         Deck.gameObject.tag="Deck"; 
                         var DeckScript = Deck.GetComponent<Deck_script>();
-                        DeckScript.count = 5;      
+                        DeckScript.count = 4;      
                     }
                     if (CurrentLoadedDecks == 5)
                     {   
@@ -113,7 +113,7 @@ public class PageManager : MonoBehaviour
                         Deck.transform.parent = Ordenador_de_Decks.transform; 
                         Deck.gameObject.tag="Deck"; 
                         var DeckScript = Deck.GetComponent<Deck_script>();
-                        DeckScript.count = 6;      
+                        DeckScript.count = 5;      
                     }
                     CurrentLoadedDecks += 1;
                 }

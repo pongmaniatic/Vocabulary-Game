@@ -6968,5 +6968,10 @@ PrefabInstance:
       propertyPath: Panel
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6393148006937577135, guid: c2c854707cb75af41bafe35025e0b8ac,
+        type: 3}
+      propertyPath: NumberOfDecks
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c854707cb75af41bafe35025e0b8ac, type: 3}

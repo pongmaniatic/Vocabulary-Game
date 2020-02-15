@@ -7,14 +7,12 @@ public class Master_Script : MonoBehaviour
 {
     // Singleton
     public static Master_Script MasterObject;// This is used to make this object not be destroyed when changing scenes
-    //private static Master_Script MasterObject;// This is used to make this object not be destroyed when changing scenes
-
+   
     //variables
     public int NumberOfDecks = 1;// This is the number of Decks that will be displayed in the game
     public bool DeckTransfered = false;
     public int CardLimitInScreen = 9;
     public int CardInScreen = 0;
-    public int SelectedCard = 0;
     public bool Pos1 = false;
     public bool Pos2 = false;
     public bool Pos3 = false;
@@ -33,26 +31,26 @@ public class Master_Script : MonoBehaviour
     public GameObject Panel;
 
     // 9 Numbers cards
-    public Card Zero = new Card("Noll", "Cero");
-    public Card One = new Card("Ett", "Uno");
-    public Card Two = new Card("Två", "Dos");
-    public Card Three = new Card("Tre", "Tres");
-    public Card Four = new Card("Fyra", "Cuatro");
-    public Card Five = new Card("Fem", "Cinco");
-    public Card Six = new Card("Sex", "Seis");
-    public Card Seven = new Card("Sju", "Siete");
-    public Card Eight = new Card("Åtta", "Ocho");
+    public Card Zero = new Card("noll", "cero");
+    public Card One = new Card("ett", "uno");
+    public Card Two = new Card("två", "dos");
+    public Card Three = new Card("tre", "tres");
+    public Card Four = new Card("fyra", "cuatro");
+    public Card Five = new Card("fem", "cinco");
+    public Card Six = new Card("sex", "seis");
+    public Card Seven = new Card("sju", "siete");
+    public Card Eight = new Card("åtta", "ocho");
 
     // 9 Colors cards
-    public Card White = new Card("Vit", "Blanco");
-    public Card Yellow = new Card("Gul", "Amarillo");
-    public Card Brown = new Card("Brun", "Cafe");
-    public Card Orange = new Card("Orange", "Naranja");
-    public Card Red = new Card("Röd", "Rojo");
-    public Card Blue = new Card("Blå", "Azul");
-    public Card Green = new Card("Grön", "Verde");
-    public Card Black = new Card("Svart", "Negro");
-    public Card Purple = new Card("Lila", "Morado");
+    public Card White = new Card("vit", "blanco");
+    public Card Yellow = new Card("gul", "amarillo");
+    public Card Brown = new Card("brun", "cafe");
+    public Card Orange = new Card("orange", "naranja");
+    public Card Red = new Card("röd", "rojo");
+    public Card Blue = new Card("blå", "azul");
+    public Card Green = new Card("grön", "verde");
+    public Card Black = new Card("svart", "negro");
+    public Card Purple = new Card("lila", "morado");
 
     //Card arrays
     public Card[] Numbers;
@@ -80,22 +78,15 @@ public class Master_Script : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-
-        
-
-
-        //private List<Card> _cartas = new List<Card>();
-        //private Dictionary<int, Card> _dictionario = new Dictionary<int, Card>();
-
-
         // complete the card arrays
         Numbers = new Card[] { Zero, One, Two, Three, Four, Five, Six, Seven, Eight };
         Colors = new Card[] { White, Yellow, Brown, Orange, Red, Blue, Green, Black, Purple };
         //put them into their respective decks
-        NumbersDecks = new Deck(Numbers, 0);
-        ColorsDecks = new Deck(Colors,1);
+        NumbersDecks = new Deck(Numbers, 0,"Numbers");
+        ColorsDecks = new Deck(Colors, 1,"Colors");
         // Complete an array of decks
         AllDecks = new Deck[] { NumbersDecks, ColorsDecks };
+
 
     }
 
@@ -103,9 +94,9 @@ public class Master_Script : MonoBehaviour
     {
         if (DeckTransfered == true)
         {
-        SceneManager.LoadScene (sceneName:"Game");
-        DeckTransfered = false;
-        } 
+            SceneManager.LoadScene(sceneName: "Game");
+            DeckTransfered = false;
+        }
     }
 
     public void DeckLoaded(int Deck)
@@ -116,7 +107,6 @@ public class Master_Script : MonoBehaviour
 
     public void CreateDeck() //This will read the deck array and will call the CreateCard function until all 9 necesary cards are created or if the array ends.
     {
-
         var WordSide1 = "";
         var WordSide2 = "";
         int maxAmountOfCards = 9;
@@ -126,69 +116,31 @@ public class Master_Script : MonoBehaviour
         var sizeOfList = cardPositions.Count;
 
 
-        //Debug.Log(sizeOfList);
-
-
-
         for (int i = 0; i < maxAmountOfCards; i++)
         {
             Panel = GameObject.FindGameObjectWithTag("Panel");
             //Debug.Log("A Card in the" + i + " position was created ");
             sizeOfList = cardPositions.Count;
-             RandomNumber = Random.Range(0, sizeOfList-1);
-             currentItemFromList = cardPositions[RandomNumber];
+            RandomNumber = Random.Range(0, sizeOfList - 1);
+            currentItemFromList = cardPositions[RandomNumber];
 
-             WordSide1 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side1;
-             WordSide2 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side2;
-             //WordSide1 = "it worked";
-             //WordSide2 = "yes it did";
-            
+            WordSide1 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side1;
+            WordSide2 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side2;
+
             // generate the card
             card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
             card.transform.SetParent(Panel.transform);
-            //card.transform.parent = Panel.transform;
             card.gameObject.tag = "card";
             var CardScript = card.GetComponent<CardScript>();
-            CardScript.Position = i+1;
+            CardScript.Position = i + 1;
             CardScript.WordSide1 = WordSide1;
             CardScript.WordSide2 = WordSide2;
             FinishedLoadingCurrent = true;
             cardPositions.Remove(cardPositions[RandomNumber]);
 
         }
-
-
-
-
-
-        /*
-        while (CardInScreen != CardLimitInScreen)
-        {
-            CurrentCard = CurrentDeck.Cards[CardInScreen];
-            var TheCardWasCreated = false;
-
-            if (CardInScreen > CardLimitInScreen)
-            {
-                CardInScreen = CardLimitInScreen;
-            }
-
-            WordSide1 = CurrentCard.Side1;
-            WordSide2 = CurrentCard.Side2;
-
-            Debug.Log(WordSide1);
-            Debug.Log(WordSide2);
-
-            TheCardWasCreated = CreateCard(WordSide1, WordSide2);
-            if (TheCardWasCreated == true)
-            {
-                CardInScreen += 1;
-
-            }
-        }
-        FinishedCreating = true;
-        */
     }
-
+    /*
     public bool CreateCard(string Side1, string Side2) //This will randomize 9 numbers, check if it already created a card in that position, if not it creates a card asigned to that position in the screen and so on
     {
         var RandomNumber = Random.Range(1, 10);
@@ -356,15 +308,19 @@ public class Master_Script : MonoBehaviour
         return false;
     }
 }
+*/
+}
 public struct Deck
 {
     public Card[] Cards;
     public int ID;
+    public string DeckName;
 
-    public Deck(Card[] cards,int id)
+    public Deck(Card[] cards,int id, string name)
     {
         Cards = cards;
         ID = id;
+        DeckName = name;
     }
 }
 public struct Card

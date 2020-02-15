@@ -13,13 +13,23 @@ public class CardScript : MonoBehaviour
     public bool CurrentSide = true;
     public TextMeshProUGUI Word;
     public GameObject Master2;
-    public Sprite CardSelesctedSprite;
-    public Sprite CardSprite;
+    public GameObject GameManager;
+    public GameManagerScript GameManagerScript;
     public Master_Script MasterScript;
+
+    public Sprite Card;
+    public Sprite Card1Check;
+    public Sprite Card2Check;
+
+    public Sprite CardSelected;
+    public Sprite CardSelected1Check;
+    public Sprite CardSelected2Check;
 
     void Awake() // Finds the master object and its script
     {
         MasterScript = Master_Script.MasterObject;
+        GameManager = GameObject.Find("GameManager");
+        GameManagerScript = GameManager.GetComponent<GameManagerScript>();
     }
 
     void Start()
@@ -65,20 +75,61 @@ public class CardScript : MonoBehaviour
 
     public void Update()
     {
-        if (MasterScript.SelectedCard == Position)
+        if (Checks == 0)
         {
-            this.gameObject.GetComponent<Image>().sprite = CardSelesctedSprite;
+            if (GameManagerScript.SelectedCard == Position)
+            {
+                this.gameObject.GetComponent<Image>().sprite = CardSelected;
+            }
+            else
+            {
+                this.gameObject.GetComponent<Image>().sprite = Card;
+            }
         }
-        else
+        if (Checks == 1)
         {
-            this.gameObject.GetComponent<Image>().sprite = CardSprite;
+            if (GameManagerScript.SelectedCard == Position)
+            {
+                this.gameObject.GetComponent<Image>().sprite = CardSelected1Check;
+            }
+            else
+            {
+                this.gameObject.GetComponent<Image>().sprite = Card1Check;
+            }
         }
+        if (Checks == 2)
+        {
+            if (GameManagerScript.SelectedCard == Position)
+            {
+                this.gameObject.GetComponent<Image>().sprite = CardSelected2Check;
+            }
+            else
+            {
+                this.gameObject.GetComponent<Image>().sprite = Card2Check;
+            }
+        }
+
+        if (GameManagerScript.SelectedCard == Position && GameManagerScript.CorrectCheck == 1)
+        {
+            GameManagerScript.CorrectCheck = 0;
+            if (Checks < 2)
+            {
+                Checks += 1;
+            }
+        }
+        if (GameManagerScript.SelectedCard == Position && GameManagerScript.CorrectCheck == 2)
+        {
+            GameManagerScript.CorrectCheck = 0;
+        }
+
     }
 
     public void Selected()
     {
-        MasterScript.SelectedCard = Position;
-        Debug.Log(MasterScript.SelectedCard);
 
+        GameManagerScript.SelectedCard = Position;
+        GameManagerScript.word1 = WordSide1;
+        GameManagerScript.word2 = WordSide2;
+        GameManagerScript.FirstSelect = false;
     }
 }
