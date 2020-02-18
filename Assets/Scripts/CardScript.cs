@@ -18,22 +18,20 @@ public class CardScript : MonoBehaviour
     public GameObject GameManager;
     public GameManagerScript GameManagerScript;
     public Master_Script MasterScript;
-
     public Sprite Card;
     public Sprite Card1Check;
     public Sprite Card2Check;
-
     public Sprite CardSelected;
     public Sprite CardSelected1Check;
     public Sprite CardSelected2Check;
-
     public Sprite CardSelected1CheckCorrect;
     public Sprite CardSelected2CheckCorrect;
-
     public GameObject GameMenubar;
     public TMP_InputField TextBox;
-
     public bool VictoryCheck = false;
+
+    public int CoolDownTime = 0;
+    public bool CoolDown = false;
 
     void Awake() // Finds the master object and its script
     {
@@ -43,7 +41,6 @@ public class CardScript : MonoBehaviour
 
         
     }
-
     void Start()
     {
         if (Position == 1)
@@ -84,7 +81,6 @@ public class CardScript : MonoBehaviour
         }
         Word.text = WordSide2;
     }
-
     public void Update()
     {
         if (GameMenubar == null)
@@ -163,6 +159,8 @@ public class CardScript : MonoBehaviour
         {
             GameManagerScript.CorrectCheck = 0;
             Word.text = WordSide1;
+            CoolDownTime = 1;
+            CoolDown = true;
         }
 
         if (VictoryCheck == true && GameManagerScript.SelectedCard != Position)
@@ -186,8 +184,15 @@ public class CardScript : MonoBehaviour
         {
             Word.text = WordSide2;
         }
+        if (CoolDownTime == 0)
+        {
+            CoolDown = false;
+        }
+        if (CoolDown == true)
+        {
+            //add code later  
+        }
     }
-
     public void Selected()
     {
         //EventSystem.current.SetSelectedGameObject(null);
@@ -199,7 +204,6 @@ public class CardScript : MonoBehaviour
         //TextBox.Select();
         StartCoroutine(SelectTextField());
     }
-
     private IEnumerator SelectTextField()
     {
         yield return new WaitForSeconds(0.1f);
