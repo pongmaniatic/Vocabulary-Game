@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CardScript : MonoBehaviour
 {
+    //Debug.Log(" ");
     public string WordSide1 = "Empty";
     public string WordSide2 = "Empty";
     public int Checks = 0;
@@ -25,11 +27,21 @@ public class CardScript : MonoBehaviour
     public Sprite CardSelected1Check;
     public Sprite CardSelected2Check;
 
+    public Sprite CardSelected1CheckCorrect;
+    public Sprite CardSelected2CheckCorrect;
+
+    public GameObject GameMenubar;
+    public TMP_InputField TextBox;
+
+    public bool VictoryCheck = false;
+
     void Awake() // Finds the master object and its script
     {
         MasterScript = Master_Script.MasterObject;
         GameManager = GameObject.Find("GameManager");
         GameManagerScript = GameManager.GetComponent<GameManagerScript>();
+
+        
     }
 
     void Start()
@@ -75,6 +87,18 @@ public class CardScript : MonoBehaviour
 
     public void Update()
     {
+        if (GameMenubar == null)
+        {
+            GameMenubar = GameObject.FindGameObjectWithTag("GameMenu");
+            
+        }
+        if (GameMenubar != null && TextBox == null)
+        {
+            TextBox = GameMenubar.GetComponent<TMP_InputField>();
+        }
+
+
+        // This is for showing the right sprite
         if (Checks == 0)
         {
             if (GameManagerScript.SelectedCard == Position)
@@ -85,51 +109,100 @@ public class CardScript : MonoBehaviour
             {
                 this.gameObject.GetComponent<Image>().sprite = Card;
             }
-        }
+        } // No check
         if (Checks == 1)
         {
             if (GameManagerScript.SelectedCard == Position)
             {
-                this.gameObject.GetComponent<Image>().sprite = CardSelected1Check;
+                if (VictoryCheck == true)
+                {
+                    this.gameObject.GetComponent<Image>().sprite = CardSelected1CheckCorrect;
+                }
+                else
+                {
+                    this.gameObject.GetComponent<Image>().sprite = CardSelected1Check;
+                }
             }
             else
             {
                 this.gameObject.GetComponent<Image>().sprite = Card1Check;
             }
-        }
+        } // One check
         if (Checks == 2)
         {
             if (GameManagerScript.SelectedCard == Position)
             {
-                this.gameObject.GetComponent<Image>().sprite = CardSelected2Check;
+
+                if (VictoryCheck == true)
+                {
+                    this.gameObject.GetComponent<Image>().sprite = CardSelected2CheckCorrect;
+                }
+                else
+                {
+                    this.gameObject.GetComponent<Image>().sprite = CardSelected2Check;
+                }
+                
             }
             else
             {
                 this.gameObject.GetComponent<Image>().sprite = Card2Check;
             }
-        }
+        } // Two checks
 
+        // This is for adding new checks
         if (GameManagerScript.SelectedCard == Position && GameManagerScript.CorrectCheck == 1)
         {
             GameManagerScript.CorrectCheck = 0;
             if (Checks < 2)
             {
                 Checks += 1;
+                VictoryCheck = true;
             }
         }
         if (GameManagerScript.SelectedCard == Position && GameManagerScript.CorrectCheck == 2)
         {
             GameManagerScript.CorrectCheck = 0;
+            Word.text = WordSide1;
         }
 
+        if (VictoryCheck == true && GameManagerScript.SelectedCard != Position)
+        {
+            VictoryCheck = false;
+            transform.position = new Vector3(-9f, 7f, 0);
+            GameManagerScript.NumberOfCardsActive -= 1;
+        }
+        if (VictoryCheck == true)
+        {
+            Word.text = WordSide1;
+            if (GameManagerScript.NumberOfCardsActive < 2)
+            {
+                GameManagerScript.HiddenButton();
+                transform.position = new Vector3(-9f, 7f, 0);
+                GameManagerScript.NumberOfCardsActive -= 1;
+            }
+        }
+
+        if (GameManagerScript.SelectedCard != Position && GameManagerScript.CorrectCheck == 0)
+        {
+            Word.text = WordSide2;
+        }
     }
 
     public void Selected()
     {
-
+        //EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(TextBox.gameObject);
         GameManagerScript.SelectedCard = Position;
         GameManagerScript.word1 = WordSide1;
         GameManagerScript.word2 = WordSide2;
         GameManagerScript.FirstSelect = false;
+        //TextBox.Select();
+        StartCoroutine(SelectTextField());
+    }
+
+    private IEnumerator SelectTextField()
+    {
+        yield return new WaitForSeconds(0.1f);
+        TextBox.Select();
     }
 }

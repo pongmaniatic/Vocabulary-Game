@@ -71,6 +71,8 @@
     <Compile Include="Assets\Scripts\Master_Script.cs" />
     <Compile Include="Assets\Scripts\Master_Script_2.cs" />
     <Compile Include="Assets\Scripts\PageManager.cs" />
+    <Compile Include="Assets\Scripts\StartGame.cs" />
+    <Compile Include="Assets\Scripts\TextBox.cs" />
     <Compile Include="Assets\Scripts\Update_volume.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

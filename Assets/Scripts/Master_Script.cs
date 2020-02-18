@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Master_Script : MonoBehaviour
 {
+    //Debug.Log("");
     // Singleton
     public static Master_Script MasterObject;// This is used to make this object not be destroyed when changing scenes
    
@@ -105,6 +106,11 @@ public class Master_Script : MonoBehaviour
         ChosenDeck = Deck;
     }
 
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(sceneName: "Menu_principal");
+    }
+
     public void CreateDeck() //This will read the deck array and will call the CreateCard function until all 9 necesary cards are created or if the array ends.
     {
         var WordSide1 = "";
@@ -115,18 +121,14 @@ public class Master_Script : MonoBehaviour
         var cardPositions = new List<int>(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
         var sizeOfList = cardPositions.Count;
 
-
         for (int i = 0; i < maxAmountOfCards; i++)
         {
             Panel = GameObject.FindGameObjectWithTag("Panel");
-            //Debug.Log("A Card in the" + i + " position was created ");
             sizeOfList = cardPositions.Count;
             RandomNumber = Random.Range(0, sizeOfList - 1);
             currentItemFromList = cardPositions[RandomNumber];
-
-            WordSide1 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side1;
-            WordSide2 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side2;
-
+            WordSide2 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side1;
+            WordSide1 = MasterObject.AllDecks[ChosenDeck].Cards[currentItemFromList].Side2;
             // generate the card
             card = Instantiate(CardPrefab, new Vector3(-3, 1, 100), Quaternion.identity);
             card.transform.SetParent(Panel.transform);
@@ -137,7 +139,7 @@ public class Master_Script : MonoBehaviour
             CardScript.WordSide2 = WordSide2;
             FinishedLoadingCurrent = true;
             cardPositions.Remove(cardPositions[RandomNumber]);
-
+            
         }
     }
     /*

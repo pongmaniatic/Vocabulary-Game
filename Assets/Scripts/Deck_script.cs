@@ -12,6 +12,7 @@ public class Deck_script : MonoBehaviour
     public GameObject MasterObject;
     public int count;
 
+    public bool WasCorrect = false;
     private bool OneClick = false;
 
     void Awake() // Finds the master object and its script

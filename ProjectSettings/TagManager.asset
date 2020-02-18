@@ -7,6 +7,9 @@ TagManager:
   - Deck
   - card
   - Panel
+  - GameMenu
+  - Master
+  - ContinueButton
   layers:
   - Default
   - TransparentFX
