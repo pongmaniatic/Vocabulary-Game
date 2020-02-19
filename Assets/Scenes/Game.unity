@@ -1387,16 +1387,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedCard: 0
-  word1: 
-  word2: 
+  Word1: 
+  Word2: 
   HintWord: 
   InputWord: 
   HintWriter: {fileID: 225463312}
-  textBox: {fileID: 1358808987}
-  button: {fileID: 2021823873}
-  hiddenButton: {fileID: 637279058}
+  TextBox: {fileID: 1358808987}
+  Button: {fileID: 2021823873}
+  HiddenButton: {fileID: 637279058}
   FirstSelect: 0
   CorrectCheck: 0
+  CoolDown: 0
   NumberOfCardsActive: 9
 --- !u!1 &774903296
 GameObject:

@@ -377,7 +377,7 @@ MonoBehaviour:
   Checks: 0
   Position: 0
   CurrentSide: 1
-  Word: {fileID: 6816275289550587326}
+  CardText: {fileID: 6816275289550587326}
   Master2: {fileID: 0}
   GameManager: {fileID: 0}
   GameManagerScript: {fileID: 0}
@@ -392,6 +392,8 @@ MonoBehaviour:
     type: 3}
   CardSelected2CheckCorrect: {fileID: 21300000, guid: 431da6b0953151d4fb4b97362037417a,
     type: 3}
+  Cardlocked: {fileID: 21300000, guid: deb71f2564c1c5b4ba1847a8df84e94a, type: 3}
   GameMenubar: {fileID: 0}
   TextBox: {fileID: 0}
   VictoryCheck: 0
+  CardCoolDownActivated: 0
