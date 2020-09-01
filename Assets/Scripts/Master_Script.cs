@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
+using System.IO;
 
 public class Master_Script : MonoBehaviour
 {
     //Debug.Log("");
     // Singleton
     public static Master_Script MasterObject;// This is used to make this object not be destroyed when changing scenes
-   
+
     //variables
     public int NumberOfDecks = 1;// This is the number of Decks that will be displayed in the game
     public bool DeckTransfered = false;
@@ -25,7 +28,6 @@ public class Master_Script : MonoBehaviour
     public bool Pos9 = false;
     public bool FinishedCreating = false;
     public bool FinishedLoadingCurrent = false;
-
 
     private GameObject card;
     public GameObject CardPrefab;
@@ -66,6 +68,9 @@ public class Master_Script : MonoBehaviour
     private Deck CurrentDeck;
     private Card CurrentCard;
 
+    public TextMeshProUGUI myText;
+    public int testingSaveSystem = 0;
+    private const string SAVE_SEPRATOR = "#SAVE-VALUE#";
 
     public void Awake() //This makes The master object survive the change in scene and creates the Deck Numbers
     {
@@ -78,19 +83,24 @@ public class Master_Script : MonoBehaviour
             MasterObject = this;
             DontDestroyOnLoad(gameObject);
         }
-
         // complete the card arrays
         Numbers = new Card[] { Zero, One, Two, Three, Four, Five, Six, Seven, Eight };
         Colors = new Card[] { White, Yellow, Brown, Orange, Red, Blue, Green, Black, Purple };
+
+
         //put them into their respective decks
-        NumbersDecks = new Deck(Numbers, 0,"Numbers");
-        ColorsDecks = new Deck(Colors, 1,"Colors");
+        NumbersDecks = new Deck(Numbers, 0, "Numbers");
+        ColorsDecks = new Deck(Colors, 1, "Colors");
+
         // Complete an array of decks
         AllDecks = new Deck[] { NumbersDecks, ColorsDecks };
 
-
-    }
-
+        SaveObject saveObject = new SaveObject{TextingText = 0};
+        string json = JsonUtility.ToJson(saveObject);
+        Debug.Log(json);
+        SaveObject loadedSaveObject = JsonUtility.FromJson<SaveObject>(json);
+        Debug.Log(loadedSaveObject.TextingText);
+    } 
     public void Update() // This detects the signal of the deck having been chosen and loads the next scene
     {
         if (DeckTransfered == true)
@@ -98,19 +108,18 @@ public class Master_Script : MonoBehaviour
             SceneManager.LoadScene(sceneName: "Game");
             DeckTransfered = false;
         }
-    }
+        myText.text = testingSaveSystem.ToString();
 
+    }
     public void DeckLoaded(int Deck)
     {
         DeckTransfered = true;
         ChosenDeck = Deck;
     }
-
     public void BackToMenu()
     {
         SceneManager.LoadScene(sceneName: "Menu_principal");
     }
-
     public void CreateDeck() //This will read the deck array and will call the CreateCard function until all 9 necesary cards are created or if the array ends.
     {
         var WordSide1 = "";
@@ -311,6 +320,35 @@ public class Master_Script : MonoBehaviour
     }
 }
 */
+
+
+    public void Plus()
+    {
+        testingSaveSystem += 1;
+    }
+    public void Minus()
+    {
+        testingSaveSystem -= 1;
+    }
+    public void Save()
+    {
+        int goldAmount = testingSaveSystem;
+        SaveObject saveObject = new SaveObject {
+            TextingText = goldAmount
+        };
+        string json = JsonUtility.ToJson(saveObject);
+        File.WriteAllText(Application.dataPath + "/save.txt", json);
+    }
+    public void Load()
+    {
+        
+    }
+
+    private class SaveObject
+    {
+        public int TextingText;
+    }
+
 }
 public struct Deck
 {
@@ -325,7 +363,7 @@ public struct Deck
         DeckName = name;
     }
 }
-public struct Card
+public struct Card //implements Seralizable
 {
     public int cardSide;
     public string Side1;
@@ -337,4 +375,16 @@ public struct Card
         Side2 = S2;
         cardSide = side;
     }
+/*
+Seralize()
+    Deserlialize()
+    Marshall
+    Unmarchall
+    
+     * {
+     *  cardSide: 1,
+     *  Side1: "Word one",
+     *  Side2: "Word two
+     * }
+     */
 }

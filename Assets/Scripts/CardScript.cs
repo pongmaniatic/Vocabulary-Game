@@ -30,14 +30,20 @@ public class CardScript : MonoBehaviour
     [SerializeField] private TMP_InputField TextBox;
     public bool VictoryCheck = false;
 
+
     public bool CardCoolDownActivated = false;
 
+    public void UnlockAllCards() // This is a delegate that unlocks all cards in screen.
+    {
+        CardCoolDownActivated = false;
+    }
 
     void Awake() //(cleaned) Finds the master object and its script 
     {
         MasterScript = Master_Script.MasterObject;
         GameManager = GameObject.Find("GameManager");
         GameManagerScript = GameManager.GetComponent<GameManagerScript>();
+
     }
     void Start()
     {
@@ -46,47 +52,43 @@ public class CardScript : MonoBehaviour
         GameManagerScript.TestDelegate += UnlockAllCards;
     }
 
-    public void UnlockAllCards() // This is a delegate that unlocks all cards in screen.
-    {
-        CardCoolDownActivated = false;
-    }
     public void PlaceCardsOnScreen(int CardPosition) // This Function asked what position ID the card has and moves the card to the acording position.
     {
         if (CardPosition == 1)
         {
-            transform.position = new Vector3(-3.65f, 2.8f, 0);
+            transform.position = new Vector3(-3.65f+2, 2.8f, 0);
         }
         if (CardPosition == 2)
         {
-            transform.position = new Vector3(0, 2.8f, 0);
+            transform.position = new Vector3(0 + 2, 2.8f, 0);
         }
         if (CardPosition == 3)
         {
-            transform.position = new Vector3(3.65f, 2.8f, 0);
+            transform.position = new Vector3(3.65f + 2, 2.8f, 0);
         }
         if (CardPosition == 4)
         {
-            transform.position = new Vector3(-3.65f, 0.58f, 0);
+            transform.position = new Vector3(-3.65f + 2, 0.58f, 0);
         }
         if (CardPosition == 5)
         {
-            transform.position = new Vector3(0, 0.58f, 0);
+            transform.position = new Vector3(0 + 2, 0.58f, 0);
         }
         if (CardPosition == 6)
         {
-            transform.position = new Vector3(3.65f, 0.58f, 0);
+            transform.position = new Vector3(3.65f + 2, 0.58f, 0);
         }
         if (CardPosition == 7)
         {
-            transform.position = new Vector3(-3.65f, -1.64f, 0);
+            transform.position = new Vector3(-3.65f + 2, -1.64f, 0);
         }
         if (CardPosition == 8)
         {
-            transform.position = new Vector3(0, -1.64f, 0);
+            transform.position = new Vector3(0 + 2, -1.64f, 0);
         }
         if (CardPosition == 9)
         {
-            transform.position = new Vector3(3.65f, -1.64f, 0);
+            transform.position = new Vector3(3.65f + 2, -1.64f, 0);
         }
     }
 
@@ -101,7 +103,7 @@ public class CardScript : MonoBehaviour
         {
             TextBox = GameMenubar.GetComponent<TMP_InputField>();
         }
-
+        
         if (CardCoolDownActivated == false)
         {
             // This is for showing the right sprite
@@ -197,14 +199,22 @@ public class CardScript : MonoBehaviour
         {
             CardCoolDownActivated = false;
         }
+        if (GameManagerScript.NumberOfCardsActive == 1)
+        {
+            CardCoolDownActivated = false;
+        }
+
+
         if (CardCoolDownActivated == true && GameManagerScript.SelectedCard != Position)
         {
             this.gameObject.GetComponent<Image>().sprite = Cardlocked;
             CardText.text = "";
         }
     }
+    
     public void Selected()
     {
+        
         if (CardCoolDownActivated == false)
         {
             GameManagerScript.SelectedCard = Position;
@@ -214,6 +224,7 @@ public class CardScript : MonoBehaviour
             StartCoroutine(SelectTextField());
         }
     }
+    
     private IEnumerator SelectTextField()
     {
         yield return new WaitForSeconds(0.1f);

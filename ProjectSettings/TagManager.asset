@@ -10,6 +10,9 @@ TagManager:
   - GameMenu
   - Master
   - ContinueButton
+  - idle
+  - good
+  - bad
   layers:
   - Default
   - TransparentFX

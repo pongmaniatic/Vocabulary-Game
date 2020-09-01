@@ -14,6 +14,11 @@ public class GameManagerScript : MonoBehaviour
     public string Word2;
     public string HintWord = "";
     public string InputWord;
+    public float timeRemaining = 0;
+
+    public GameObject idle;
+    public GameObject good;
+    public GameObject bad;
 
     public TextMeshProUGUI HintWriter;
     public TMP_InputField TextBox;
@@ -30,7 +35,18 @@ public class GameManagerScript : MonoBehaviour
 
     void Update()
     {
-
+        
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        if (timeRemaining <= 0 && timeRemaining >= -1)
+        {
+            timeRemaining = -2;
+            idle.gameObject.SetActive(true);
+            good.gameObject.SetActive(false);
+            bad.gameObject.SetActive(false);
+        }
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -75,12 +91,21 @@ public class GameManagerScript : MonoBehaviour
         {
             TextBox.text = "";
             CorrectCheck = 1;
+            timeRemaining = 1.5f;
+            idle.gameObject.SetActive(false);
+            good.gameObject.SetActive(true);
+            bad.gameObject.SetActive(false);
         }
         else
         {
             TextBox.text = "";
             CorrectCheck = 2;
+            timeRemaining = 1.5f;
+            idle.gameObject.SetActive(false);
+            good.gameObject.SetActive(false);
+            bad.gameObject.SetActive(true);
         }
+
     }
     public void HiddenButtonActivate()
     {
@@ -91,5 +116,12 @@ public class GameManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName: "Menu_principal");
     }
+    public void ResetSprite()
+    {
+        idle.gameObject.SetActive(true);
+        good.gameObject.SetActive(false);
+        bad.gameObject.SetActive(false);
+    }
 
 }
+

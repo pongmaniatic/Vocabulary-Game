@@ -378,7 +378,6 @@ MonoBehaviour:
   Position: 0
   CurrentSide: 1
   CardText: {fileID: 6816275289550587326}
-  Master2: {fileID: 0}
   GameManager: {fileID: 0}
   GameManagerScript: {fileID: 0}
   MasterScript: {fileID: 0}
